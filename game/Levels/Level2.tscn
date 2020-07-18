@@ -1,0 +1,55 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/Map/navigation_map_point.png" type="Texture" id=1]
+[ext_resource path="res://game/Levels/NavMap.gd" type="Script" id=2]
+[ext_resource path="res://game/Levels/Game.gd" type="Script" id=3]
+[ext_resource path="res://game/Hongo/Hongo.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/Player/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/UI/NivelAnterior.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/UI/NivelSiguiente.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/TileMaps/NavClose.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/TileMaps/NavOpen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/TileMaps/NavOptimal.tscn" type="PackedScene" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "navigation_map_point.png 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Level2" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="NavMap" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65541, 0, 0, 65543, 0, 0, 65544, 0, 0, 131074, 0, 0, 131075, 0, 0, 131077, 0, 0, 131078, 0, 0, 131080, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327687, 0, 0, 327688, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393223, 0, 0, 393224, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0, 458757, 0, 0, 458759, 0, 0, 458760, 0, 0 )
+script = ExtResource( 2 )
+
+[node name="NavOpen" parent="NavMap" instance=ExtResource( 9 )]
+
+[node name="NavClose" parent="NavMap" instance=ExtResource( 8 )]
+
+[node name="NavOptimal" parent="NavMap" instance=ExtResource( 10 )]
+
+[node name="Hongo" parent="." instance=ExtResource( 4 )]
+position = Vector2( 544, 416 )
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( 32, 32 )
+
+[node name="NivelAnterior" parent="." instance=ExtResource( 6 )]
+nivel_anterior = "res://game/Levels/Level3.tscn"
+
+[node name="NivelSiguiente" parent="." instance=ExtResource( 7 )]
+nivel_siguiente = "res://game/Levels/Game.tscn"
