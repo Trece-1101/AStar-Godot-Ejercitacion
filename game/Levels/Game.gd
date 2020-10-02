@@ -12,10 +12,7 @@ func _ready() -> void:
 func _calculate_new_path() -> void:
 	if not already_start:
 		already_start = true
-		# TODO: establecer quien es start y quien es end
-		var start_position
-		var end_position
-		var path = nav_map.find_path(start_position, end_position)
+		var path = nav_map.find_path(player.position, hongo.position)
 		
 		if path:
 			path.remove(0)
